@@ -1,0 +1,5 @@
+FOR EACH creditor WHERE remittance,
+    FIRST credtran OF creditor WHERE credtran.BATCH = 239665
+    AND credtran.ctran_type BEGINS 'p':
+    DISP creditor.cred_acc.
+END.

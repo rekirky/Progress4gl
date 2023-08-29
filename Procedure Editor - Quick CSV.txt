@@ -1,0 +1,14 @@
+// This outputs to a file, overwrites each time it is run //
+
+OUTPUT TO VALUE ("c:\temp\salesorder.csv").
+
+ENTER QUERY (FIND FIRST debtor...)
+
+EXPORT DELIMITER "," 
+
+ENTER FIELDS (debtor.name...)
+
+END.
+OUTPUT CLOSE.
+
+

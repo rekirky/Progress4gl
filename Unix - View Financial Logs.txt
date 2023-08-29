@@ -1,0 +1,6 @@
+used on Multispares but perhaps used elsewhere
+
+cd $log   (access log directory)
+ls -al ver*   (list ver log files)
+tail vercr.log   (view end of CR log)
+
