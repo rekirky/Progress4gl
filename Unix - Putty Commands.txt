@@ -1,0 +1,9 @@
+accessing database through putty -  dbrun.bat aclient.p
+
+Top menu - F3
+Escape - F4
+
+To access databases - type in text below. Note space between . and database
+
+MU - Multispares NZ - . mnz
+MU - Multispares Test - . tst

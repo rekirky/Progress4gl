@@ -1,0 +1,18 @@
+*View*
+FOR EACH (table) WHERE (statement):
+	DISPLAY (table.field)
+
+
+*Update*
+FOR EACH (table) WHERE (statement) EXCLUSIVE-LOCK:
+		DISPLAY (table.field) (table.field).
+		UPDATE (table.field).
+		
+
+*Convert time*
+*Progress stores time as a value as seconds from midnight*
+e.g. debinvdesp.enter_time = 46216. This is 46216 seconds from midnight (start of day)		
+
+DISPLAY STRING(debinvdesp.enter_time,"HH:MM:SS")
+
+* *

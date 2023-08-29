@@ -1,0 +1,89 @@
+RUN comobj/StartSuper.p ('comobj/propertyMan.p', SESSION).
+RUN comobj/StartSuper.p ("comobj/admService.p", SESSION).
+
+/*Config Load*/
+run utl\xcj2811e.p("C:\Temp\DataDump\271117", NO).
+
+/* Customer/Debtor Load */
+def VAR o-status as logical initial no no-undo.
+def VAR o-rec-cnt as int format "z,zzz,zzz,zz9" no-undo.
+def VAR o-load-cnt as int format "z,zzz,zzz,zz9" no-undo.
+
+RUN svrutl\zcdm.p("c:\temp\Loads\\customer.csv", "UPDATE=NO", OUTPUT o-status, OUTPUT o-rec-cnt, OUTPUT o-load-cnt).
+
+DISPLAY o-status o-rec-cnt o-load-cnt.
+
+/* Supplier/Creditor Load */
+def VAR o-status as logical initial no no-undo.
+def VAR o-rec-cnt as int format "z,zzz,zzz,zz9" no-undo.
+def VAR o-load-cnt as int format "z,zzz,zzz,zz9" no-undo.
+
+RUN svrutl\zccm.p("c:\temp\Loads\\supplier.csv", "UPDATE=NO", OUTPUT o-status, OUTPUT o-rec-cnt, OUTPUT o-load-cnt).
+
+DISPLAY o-status o-rec-cnt o-load-cnt.
+
+/* Product Master */
+def VAR o-status as logical initial no no-undo.
+def VAR o-rec-cnt as int format "z,zzz,zzz,zz9" no-undo.
+def VAR o-load-cnt as int format "z,zzz,zzz,zz9" no-undo.
+
+RUN svrutl\zcpm.p("c:\temp\Loads\\product.csv", "UPDATE=NO", OUTPUT o-status, OUTPUT o-rec-cnt, OUTPUT o-load-cnt).
+
+DISPLAY o-status o-rec-cnt o-load-cnt.
+
+/* Inventory */
+def VAR o-status as logical initial no no-undo.
+def VAR o-rec-cnt as int format "z,zzz,zzz,zz9" no-undo.
+def VAR o-load-cnt as int format "z,zzz,zzz,zz9" no-undo.
+
+RUN comobj/StartSuper.p("comobj/propertyMan.p", SESSION).
+DYNAMIC-FUNCTION('setSessionProperty','UserName',"support").
+
+RUN svrutl\zciv.p("c:\temp\Loads\\inventory.csv", "UPDATE=NO", OUTPUT o-status, OUTPUT o-rec-cnt, OUTPUT o-load-cnt).
+
+DISPLAY o-status o-rec-cnt o-load-cnt.
+
+/* Debtor balances */
+def VAR o-status as logical initial no no-undo.
+def VAR o-rec-cnt as int format "z,zzz,zzz,zz9" no-undo.
+def VAR o-load-cnt as int format "z,zzz,zzz,zz9" no-undo.
+
+RUN svrutl\zcdb.p("c:\temp\Loads\\customerbal.csv", "UPDATE=NO", OUTPUT o-status, OUTPUT o-rec-cnt, OUTPUT o-load-cnt).
+
+DISPLAY o-status o-rec-cnt o-load-cnt.
+
+/* Supplier balances */
+def VAR o-status as logical initial no no-undo.
+def VAR o-rec-cnt as int format "z,zzz,zzz,zz9" no-undo.
+def VAR o-load-cnt as int format "z,zzz,zzz,zz9" no-undo.
+
+RUN svrutl\zccb.p("c:\temp\Loads\\supplierbal.csv", "UPDATE=NO", OUTPUT o-status, OUTPUT o-rec-cnt, OUTPUT o-load-cnt).
+
+DISPLAY o-status o-rec-cnt o-load-cnt.
+
+/* Debtor Address */
+def VAR o-status as logical initial no no-undo.
+def VAR o-rec-cnt as int format "z,zzz,zzz,zz9" no-undo.
+def VAR o-load-cnt as int format "z,zzz,zzz,zz9" no-undo.
+
+RUN svrutl\zcda.p("c:\temp\Loads\\customerdel.csv", "UPDATE=NO", OUTPUT o-status, OUTPUT o-rec-cnt, OUTPUT o-load-cnt).
+
+DISPLAY o-status o-rec-cnt o-load-cnt.
+
+/* Supplier Address */
+def VAR o-status as logical initial no no-undo.
+def VAR o-rec-cnt as int format "z,zzz,zzz,zz9" no-undo.
+def VAR o-load-cnt as int format "z,zzz,zzz,zz9" no-undo.
+
+RUN svrutl\zcsa.p("c:\temp\Loads\\supplierdel.csv", "UPDATE=NO", OUTPUT o-status, OUTPUT o-rec-cnt, OUTPUT o-load-cnt).
+
+DISPLAY o-status o-rec-cnt o-load-cnt.
+
+/* Main Supplier */
+def VAR o-status as logical initial no no-undo.
+def VAR o-rec-cnt as int format "z,zzz,zzz,zz9" no-undo.
+def VAR o-load-cnt as int format "z,zzz,zzz,zz9" no-undo.
+
+RUN svrutl\zcms.p("c:\temp\Loads\\mainsupplier.csv", "UPDATE=NO", OUTPUT o-status, OUTPUT o-rec-cnt, OUTPUT o-load-cnt).
+
+DISPLAY o-status o-rec-cnt o-load-cnt.
